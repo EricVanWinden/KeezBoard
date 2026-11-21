@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Digital Keez</title>
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Private home game</p>
+        <h1>Digital Keez</h1>
+      </div>
+      <div id="connection" class="connection" aria-live="polite">Not connected</div>
+    </header>
+
+    <main>
+      <section id="landing" class="panel">
+        <h2>Start or join a room</h2>
+        <div class="forms">
+          <form id="create-form">
+            <h3>Create a room</h3>
+            <label>
+              Your display name
+              <input name="display_name" maxlength="24" required autocomplete="nickname">
+            </label>
+            <button type="submit">Create room and take a seat</button>
+          </form>
+          <form id="join-form">
+            <h3>Join a room</h3>
+            <label>
+              Room code
+              <input name="code" maxlength="6" required autocomplete="off">
+            </label>
+            <label>
+              Your display name
+              <input name="display_name" maxlength="24" required autocomplete="nickname">
+            </label>
+            <button type="submit">Join room</button>
+          </form>
+        </div>
+        <p class="hint">Use a PC or tablet connected to the host's home network.</p>
+      </section>
+
+      <section id="room" hidden>
+        <div class="room-heading panel">
+          <div>
+            <p class="eyebrow">Room</p>
+            <h2 id="room-code"></h2>
+          </div>
+          <a id="invite" class="invite" target="_blank" rel="noreferrer"></a>
+        </div>
+
+        <section id="lobby" class="panel" hidden>
+          <div class="section-heading">
+            <div>
+              <h2>Lobby</h2>
+              <p id="layout-description" class="muted"></p>
+            </div>
+            <button id="start-button" type="button">Start game</button>
+          </div>
+          <ol id="seat-list" class="seat-list"></ol>
+          <p id="lobby-help" class="muted"></p>
+        </section>
+
+        <section id="game" hidden>
+          <div class="game-status panel">
+            <div id="turn-status" aria-live="polite"></div>
+            <div id="deal-status" class="muted"></div>
+          </div>
+          <div class="board-layout">
+            <section class="board-wrap panel" aria-label="Keez game board">
+              <svg id="board" viewBox="0 0 800 800" role="img" aria-label="Game board"></svg>
+              <div id="player-legend" class="player-legend"></div>
+            </section>
+            <aside class="play-panel panel">
+              <h2>Your hand</h2>
+              <div id="hand" class="hand"></div>
+              <div id="action-list" class="action-list" aria-live="polite"></div>
+              <h3>Recent updates</h3>
+              <ol id="notices" class="notices"></ol>
+            </aside>
+          </div>
+          <button id="new-room-button" class="secondary-button" type="button" hidden>Create a new room</button>
+        </section>
+      </section>
+      <p id="error" class="error" role="alert" hidden></p>
+    </main>
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
